@@ -18,6 +18,13 @@ namespace ControlExplorer
             labelWelcome.Effects.Add(fontEffect);
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            buttonClick.Effects.Add(new ButtonGradientEffect());
+        }
+
         private void OnButtonClicked(object sender, System.EventArgs e)
         {
             buttonClick.Text = string.Format("Click Count = {0}", ++count);

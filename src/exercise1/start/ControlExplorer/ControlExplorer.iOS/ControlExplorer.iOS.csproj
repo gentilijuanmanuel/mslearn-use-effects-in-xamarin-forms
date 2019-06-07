@@ -71,6 +71,8 @@
     <Compile Include="MyCustomFontEffect.iOS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\Pacifico.ttf" />
+    <Compile Include="Gradient.iOS.cs" />
+    <Compile Include="MyButtonGradientEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -132,7 +134,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ControlExplorer\ControlExplorer.csproj">
-      <Project>{492570A4-4DA7-4077-A195-1CA53C255793}</Project>
+      <Project>{5C8E39EA-17E9-481F-BE06-ADD7FAEEC46B}</Project>
       <Name>ControlExplorer</Name>
     </ProjectReference>
   </ItemGroup>

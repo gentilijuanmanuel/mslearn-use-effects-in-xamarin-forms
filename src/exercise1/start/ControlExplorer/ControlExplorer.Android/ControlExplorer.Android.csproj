@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -67,6 +66,8 @@
     <Compile Include="MyCustomFontEffect.Droid.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Gradient.Droid.cs" />
+    <Compile Include="MyButtonGradientEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Pacifico.ttf" />
@@ -101,7 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControlExplorer\ControlExplorer.csproj">
-      <Project>{492570A4-4DA7-4077-A195-1CA53C255793}</Project>
+      <Project>{5C8E39EA-17E9-481F-BE06-ADD7FAEEC46B}</Project>
       <Name>ControlExplorer</Name>
     </ProjectReference>
   </ItemGroup>
