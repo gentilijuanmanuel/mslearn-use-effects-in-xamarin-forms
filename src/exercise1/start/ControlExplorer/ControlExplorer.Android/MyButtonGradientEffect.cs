@@ -1,4 +1,5 @@
-﻿using Android.Graphics.Drawables;
+﻿using System.ComponentModel;
+using Android.Graphics.Drawables;
 using ControlExplorer.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -32,9 +33,30 @@ namespace ControlExplorer.Droid
         {
             var button = (Button)this.Element;
             var buttonColorTop = button.BackgroundColor;
-            var buttonColorBottom = Color.Black;
+            var buttonColorBottom = ButtonGradientEffect.GetGradientColor(button);
 
             this.Control.SetBackground(Gradient.GetGradientDrawable(buttonColorTop.ToAndroid(), buttonColorBottom.ToAndroid()));
+
+            var colorBottom = ButtonGradientEffect.GetGradientColor(button);
+        }
+
+        protected override void OnElementPropertyChanged(PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(e);
+
+            if (Element is Button == false)
+                return;
+
+            if (e.PropertyName == ButtonGradientEffect.GradientColorProperty.PropertyName)
+                SetGradient();
+
+            if (e.PropertyName == ButtonGradientEffect.GradientColorProperty.PropertyName
+             || e.PropertyName == VisualElement.BackgroundColorProperty.PropertyName
+             || e.PropertyName == VisualElement.WidthProperty.PropertyName
+             || e.PropertyName == VisualElement.HeightProperty.PropertyName)
+            {
+                SetGradient();
+            }
         }
     }
 }

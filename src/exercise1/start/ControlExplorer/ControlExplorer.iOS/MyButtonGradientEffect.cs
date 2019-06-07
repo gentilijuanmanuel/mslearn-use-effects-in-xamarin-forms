@@ -1,4 +1,5 @@
-﻿using ControlExplorer.iOS;
+﻿using System.ComponentModel;
+using ControlExplorer.iOS;
 using CoreAnimation;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -30,9 +31,22 @@ namespace ControlExplorer.iOS
 
             var button = (Button)this.Element;
             var buttonColorTop = button.BackgroundColor;
-            var buttonColorBottom = Color.Black;
+            var buttonColorBottom = ButtonGradientEffect.GetGradientColor(button);
 
-            this.Control.Layer.InsertSublayer(Gradient.GetGradientLayer(buttonColorTop.ToCGColor(), buttonColorBottom.ToCGColor(), (float)button.Width, (float)button.Height), 0);
+            this.gradLayer = Gradient.GetGradientLayer(buttonColorTop.ToCGColor(), buttonColorBottom.ToCGColor(), (float)button.Width, (float)button.Height);
+
+            this.Control.Layer.InsertSublayer(this.gradLayer, 0);
+        }
+
+        protected override void OnElementPropertyChanged(PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(e);
+
+            if (Element is Button == false)
+                return;
+
+            if (e.PropertyName == ButtonGradientEffect.GradientColorProperty.PropertyName)
+                SetGradient();
         }
     }
 }
